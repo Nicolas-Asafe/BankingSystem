@@ -3,20 +3,22 @@ package entities
 import "github.com/Nicolas-Asafe/BankingSystem/utils"
 
 type Message struct {
-	AuthoId string
-	ForId string
-	Id string
-	Title string
+	AuthoId     string
+	ForId       string
+	Id          string
+	Title       string
 	Description string
-	Data string
+	Data        string
+	Log         utils.Logs
 }
 
-type MessageReceived struct{
-	AuthoId string
-	Id string
-	Title string
+type MessageReceived struct {
+	AuthoId     string
+	Id          string
+	Title       string
 	Description string
-	Data string
+	Data        string
+	Log         utils.Logs
 }
 
 func (m *Message) View() utils.Response {
