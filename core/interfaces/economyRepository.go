@@ -7,5 +7,6 @@ type EconomyRepository interface {
 	Save(economy entities.Economy) utils.Response
 	Remove(id string) utils.Response
 	Put(title *string, description *string) utils.Response
-
+	FindOne(id string) utils.Response
+	Find() utils.Response
 }
