@@ -1,15 +1,20 @@
 package entities
 
-import "errors"
+import (
+	"errors"
+	"github.com/Nicolas-Asafe/BankingSystem/utils"
+)
 
 type Economy struct {
-	MinValueForAdd       float64
-	MinValueForWithdraw  float64
-	MaxValueForWithdraw  float64
-	AuthorID             string
-	Description          *string
-	Title                string
-	Value                float64
+	MinValueForAdd      float64
+	MinValueForWithdraw float64
+	MaxValueForWithdraw float64
+	AuthorID            string
+	ID                  string
+	Description         *string
+	Title               string
+	Value               float64
+	Log                 utils.Logs
 }
 
 func (e *Economy) AddValue(amount float64) {

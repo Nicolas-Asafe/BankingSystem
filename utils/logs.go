@@ -9,15 +9,15 @@ type Logs struct {
 	WithTime bool
 }
 
-func LogFormat(typeLog string, text string) {
+func logFormat(typeLog string, text string) {
 	fmt.Printf("[%s] %s", typeLog, text)
 }
-func LogFormatWithTime(typeLog string, text string, time string) {
-	fmt.Printf("[%s][%s] %s",time, typeLog, text)
+func logFormatWithTime(typeLog string, text string, time string) {
+	fmt.Printf("[%s][%s] %s", time, typeLog, text)
 
 }
 
-func GetTime(l *Logs) string {
+func getTime(l *Logs) string {
 	if l.WithTime {
 		time := time.Now().Format("2025-06-14 23:23:02")
 		return time
@@ -26,38 +26,37 @@ func GetTime(l *Logs) string {
 }
 
 func (l *Logs) Info(text string) {
-	time := GetTime(l)
+	time := getTime(l)
 	if time == "" {
-		LogFormat("INFO", text)
+		logFormat("INFO", text)
 		return
 	}
-	LogFormatWithTime("INFO",text,time)
+	logFormatWithTime("INFO", text, time)
 }
 
 func (l *Logs) Error(text string) {
-	time := GetTime(l)
+	time := getTime(l)
 	if time == "" {
-		LogFormat("ERROR", text)
+		logFormat("ERROR", text)
 		return
 	}
-	LogFormatWithTime("ERROR",text,time)
+	logFormatWithTime("ERROR", text, time)
 }
 
 func (l *Logs) Warn(text string) {
-	time := GetTime(l)
+	time := getTime(l)
 	if time == "" {
-		LogFormat("WARN", text)
+		logFormat("WARN", text)
 		return
 	}
-	LogFormatWithTime("WARN",text,time)
+	logFormatWithTime("WARN", text, time)
 }
 
 func (l *Logs) Debug(text string) {
-	time := GetTime(l)
+	time := getTime(l)
 	if time == "" {
-		LogFormat("DEBUG", text)
+		logFormat("DEBUG", text)
 		return
 	}
-	LogFormatWithTime("DEBUG",text,time)
+	logFormatWithTime("DEBUG", text, time)
 }
-
