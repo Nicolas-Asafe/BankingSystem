@@ -49,3 +49,27 @@ func (u *User) RemoveEconomy(EcoId string) utils.Response{
 	}
 	return utils.Resthis("Economy not found",errors.New("Economy not exists"),nil)
 }
+
+//Transitions separations
+
+func(u *User) FindTransition(TstId string) utils.Response{
+	for _,tst := range u.HistoryTransitions{
+		if tst.TransitionId == TstId{
+			res := utils.Resthis("Transition found",nil,tst)
+			return res
+		}
+	}
+	res:= utils.Resthis("Transition not found",errors.New("Transition not exists"),nil)
+	return res
+}
+
+func(u *User) FindTransitions() utils.Response{
+	res:= utils.Resthis("Transitions found",nil,u.HistoryTransitions)
+	return res
+}
+
+func(u *User) AddTransitionForHistory(tst Transition) utils.Response{
+	u.HistoryTransitions = append(u.HistoryTransitions, tst)
+	res:= utils.Resthis("Transition added",nil,u.HistoryTransitions)
+	return res
+}

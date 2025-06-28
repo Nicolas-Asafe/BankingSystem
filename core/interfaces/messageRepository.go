@@ -6,5 +6,6 @@ import (
 )
 
 type MessageRepository interface {
-	Send(AuthoId string,ForAuthoId string,message entities.Message) utils.Response
+	Send(message entities.Message) utils.Response
+	ReciveMessage() utils.Response
 }
