@@ -1,7 +1,9 @@
 package entities
 
-type Messages struct {
+type Message struct {
 	AuthoId string
+	ForId string
+	id string
 	Title string
 	Description *string
 	Data *any

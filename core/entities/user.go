@@ -10,7 +10,7 @@ type User struct {
 	Id                 string
 	Balance            float64
 	HistoryTransitions []Transition
-	Notifications      []Messages
+	Notifications      []Message
 	Log                utils.Logs
 }
 
