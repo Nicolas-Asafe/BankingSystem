@@ -7,10 +7,10 @@ import (
 type Response struct {
 	Message string
 	Error   error
-	Data    *struct{}
+	Data    any
 }
 
-func Resthis(Message string, Error error, Data *struct{}) Response {
+func Resthis(Message string, Error error, Data any) Response {
 	return Response{Message, Error, Data}
 }
 

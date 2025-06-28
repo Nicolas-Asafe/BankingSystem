@@ -1,6 +1,10 @@
 package entities
 
-import "github.com/Nicolas-Asafe/BankingSystem/utils"
+import (
+	"errors"
+
+	"github.com/Nicolas-Asafe/BankingSystem/utils"
+)
 
 type User struct {
 	Name               string
@@ -15,3 +19,15 @@ type User struct {
 }
 
 
+func (u *User) FindMessage(id string) utils.Response{
+	for _,msg := range u.Notifications{
+		if msg.Id == id{
+			return utils.Resthis("Message found",nil,msg)
+		}
+	}
+	return utils.Resthis("Message not found",errors.New("Message not exists"),nil)
+}
+
+func (u *User) FindMessages()utils.Response{
+	return utils.Resthis("Messages found",nil,u.Notifications)
+}
