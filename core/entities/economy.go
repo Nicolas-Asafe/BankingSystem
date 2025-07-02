@@ -17,24 +17,31 @@ type Economy struct {
 	Log                 utils.Logs
 }
 
-func (e *Economy) AddValue(amount float64) {
-	if amount < e.MinValueForAdd {
-		return
-	}
-	e.Value += amount
+type EconomyReturn struct{
+	Can  bool
+	Value float64
+	Error error
 }
 
-func (e *Economy) Withdraw(amount float64) (float64, error) {
+func (e *Economy) AddValue(amount float64) EconomyReturn{
+	if amount < e.MinValueForAdd {
+		return EconomyReturn{false,0,errors.New("")}
+	}
+	valueFinal := e.Value+amount
+	return EconomyReturn{true,valueFinal,nil}
+}
+
+func (e *Economy) Withdraw(amount float64) EconomyReturn {
 	if amount > e.MaxValueForWithdraw {
-		return 0, errors.New("the maximum value was reached")
+		return EconomyReturn{false,0, errors.New("the maximum value was reached")}
 	}
 	if amount < e.MinValueForWithdraw {
-		return 0, errors.New("the minimum value was reached")
+		return EconomyReturn{false,0, errors.New("the maximum value was reached")}
 	}
 	if amount > e.Value {
-		return 0, errors.New("you do not have enough balance")
+		return EconomyReturn{false,0,errors.New("you do not have enough balance")}
 	}
 
-	e.Value -= amount
-	return amount, nil
+	valueFinal:= e.Value-amount
+	return EconomyReturn{true,valueFinal,nil}
 }
