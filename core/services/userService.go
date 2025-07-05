@@ -32,3 +32,10 @@ func (u UserService) EditUserName(Id string,Name string) utils.Response{
 	}
 	return utils.Resthis("User name edited successfully",nil,Name)
 }
+func (u UserService) FindOneUser(Id string) utils.Response{
+	res:=u.Repo.FindUser(Id)
+	if res.Error != nil {
+		utils.Resthis("Error for find name user",res.Error,nil)
+	}
+	return utils.Resthis("User name finded successfully",nil,res.Data)
+}
