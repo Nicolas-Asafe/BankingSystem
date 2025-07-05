@@ -18,3 +18,10 @@ func (u UserService) NewUser(User entities.User) utils.Response{
 	}
 	return utils.Resthis("User created successfully",nil,User)
 }
+func (u UserService) DeleteUser(Id string) utils.Response{
+	res:=u.Repo.RemoveUser(Id)
+	if res.Error != nil {
+		utils.Resthis("Error for delete user",res.Error,nil)
+	}
+	return utils.Resthis("User deleted successfully",nil,nil)
+}
