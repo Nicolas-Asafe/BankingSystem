@@ -17,6 +17,16 @@ func logFormatWithTime(typeLog string, text string, time string) {
 
 }
 
+func (l *Logs) NewLog(text string,typeLOG string){
+	time := getTime(l)
+	if time == "" {
+		logFormat(typeLOG, text)
+		return
+	}
+	logFormatWithTime(typeLOG, text, time)
+
+}
+
 func getTime(l *Logs) string {
 	if l.WithTime {
 		time := time.Now().Format("2025-06-14 23:23:02")
@@ -26,37 +36,17 @@ func getTime(l *Logs) string {
 }
 
 func (l *Logs) Info(text string) {
-	time := getTime(l)
-	if time == "" {
-		logFormat("INFO", text)
-		return
-	}
-	logFormatWithTime("INFO", text, time)
+	l.NewLog(text,"INFO")
 }
 
 func (l *Logs) Error(text string) {
-	time := getTime(l)
-	if time == "" {
-		logFormat("ERROR", text)
-		return
-	}
-	logFormatWithTime("ERROR", text, time)
+	l.NewLog(text,"ERROR")
 }
 
 func (l *Logs) Warn(text string) {
-	time := getTime(l)
-	if time == "" {
-		logFormat("WARN", text)
-		return
-	}
-	logFormatWithTime("WARN", text, time)
+	l.NewLog(text,"WARN")
 }
 
 func (l *Logs) Debug(text string) {
-	time := getTime(l)
-	if time == "" {
-		logFormat("DEBUG", text)
-		return
-	}
-	logFormatWithTime("DEBUG", text, time)
+	l.NewLog(text,"DEBUG")
 }
