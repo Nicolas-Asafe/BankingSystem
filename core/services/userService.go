@@ -39,3 +39,10 @@ func (u UserService) FindOneUser(Id string) utils.Response{
 	}
 	return utils.Resthis("User name finded successfully",nil,res.Data)
 }
+func (u UserService) ListUsers() utils.Response{
+	res:=u.Repo.FindUsers()
+	if res.Error != nil {
+		utils.Resthis("Error for list users",res.Error,nil)
+	}
+	return utils.Resthis("Users listed successfully",nil,res.Data)
+}
