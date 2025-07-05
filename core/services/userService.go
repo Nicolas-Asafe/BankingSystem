@@ -25,3 +25,10 @@ func (u UserService) DeleteUser(Id string) utils.Response{
 	}
 	return utils.Resthis("User deleted successfully",nil,nil)
 }
+func (u UserService) EditUserName(Id string,Name string) utils.Response{
+	res:=u.Repo.PutUserName(Id,Name)
+	if res.Error != nil {
+		utils.Resthis("Error for edit name user",res.Error,nil)
+	}
+	return utils.Resthis("User name edited successfully",nil,Name)
+}
