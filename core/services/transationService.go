@@ -19,8 +19,8 @@ func (t TransitionService) SendTransition(tst entities.Transition){
 	utils.Resthis("Transaction completed successfully",nil,tst)
 }
 
-func (t TransitionService) ReciveTransition(id string,tst entities.Transition){
-	res:=t.Repo.ReciveTransition(id,tst)
+func (t TransitionService) ReciveTransition(tst entities.Transition){
+	res:=t.Repo.ReciveTransition(tst)
 	if res.Error != nil{
 		utils.Resthis("Error for recive transition",res.Error,nil)
 		return
