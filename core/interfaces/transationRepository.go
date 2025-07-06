@@ -5,5 +5,5 @@ import "github.com/Nicolas-Asafe/BankingSystem/core/entities"
 
 type TransitionRepository interface{
 	Send(entities.Transition) utils.Response
-	ReciveTransition() utils.Response
+	ReciveTransition(ID string,tst entities.Transition) utils.Response
 }
