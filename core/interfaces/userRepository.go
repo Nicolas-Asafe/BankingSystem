@@ -11,4 +11,6 @@ type UserRepository interface{
 	FindUser(Id string) utils.Response
 	FindUsers() utils.Response
 	PutUserName(Id string,Name string) utils.Response
+	RemoveValueFrom(Id string,value float64) utils.Response
+	AddValueFor(Id string,value float64) utils.Response
 }
