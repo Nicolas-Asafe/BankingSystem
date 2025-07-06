@@ -46,3 +46,17 @@ func (u UserService) ListUsers() utils.Response{
 	}
 	return utils.Resthis("Users listed successfully",nil,res.Data)
 }
+func (u UserService) RemoveValueFrom(Id string,value float64) utils.Response{
+	res:=u.Repo.RemoveValueFrom(Id,value)
+	if res.Error != nil {
+		utils.Resthis("Error for remove value",res.Error,nil)
+	}
+	return utils.Resthis("Value removed successfully",nil,res.Data)
+}
+func (u UserService) AddValueFor(Id string,value float64) utils.Response{
+	res:=u.Repo.AddValueFor(Id,value)
+	if res.Error != nil {
+		utils.Resthis("Error for add value",res.Error,nil)
+	}
+	return utils.Resthis("Value added successfully",nil,res.Data)
+}
