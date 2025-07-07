@@ -9,10 +9,18 @@ type EconomyService struct{
 }
 
 func (e EconomyService) FindOneEconomy(Id string,AuthoId string){
-	res:=t.Repo.findOne(AuthoId,Id)
+	res:=e.Repo.findOne(AuthoId,Id)
 	if res.Error != nil{
 		utils.Resthis("Error searching for economy",res.Error,nil)
 		return
 	}
 	utils.Resthis("Economy finded successfully",nil,res.Data)
+}
+func (e EconomyService) FindEconomys(){
+	res:=e.Repo.find()
+	if res.Error != nil{
+		utils.Resthis("Error searching for economys",res.Error,nil)
+		return
+	}
+	utils.Resthis("Economys listed successfully",nil,res.Data)
 }
