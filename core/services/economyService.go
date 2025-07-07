@@ -24,3 +24,11 @@ func (e EconomyService) FindEconomys(){
 	}
 	utils.Resthis("Economys listed successfully",nil,res.Data)
 }
+func (e EconomyService) CreateEconomy(entities.Economy){
+	res:=e.Repo.newEconomy()
+	if res.Error != nil{
+		utils.Resthis("Error for create a new economy",res.Error,nil)
+		return
+	}
+	utils.Resthis("Economy created successfully",nil,res.Data)
+}
