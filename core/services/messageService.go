@@ -14,5 +14,13 @@ func (m MessageRepository) SendMessage(msg entities.Message){
 		utils.Resthis("Error sending message",res.Error,nil)
 		return
 	}
-	utils.Resthis("Message sent successfully",nil,)
+	utils.Resthis("Message sent successfully",nil,msg.Title)
+}
+func (m MessageRepository) ReciveMessage(msg entities.Message){
+	res := m.Repo.ReciveMessage(msg)
+	if res.Error != nil{
+		utils.Resthis("Error for receiving message",res.Error,nil)
+		return
+	}
+	utils.Resthis("Message recived successfully",nil,msg.Title)
 }
