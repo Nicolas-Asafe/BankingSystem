@@ -9,6 +9,6 @@ type EconomyRepository interface {
 	newEconomy(Economy entities.Economy) utils.Response
 	removeEconomy(Id string) utils.Response
 	putName(newName string) utils.Response
-	AddValue(value float64,Id string) utils.Response
-	Withdraw(value float64,Id string) utils.Response
+	AddValue(value float64,Id string,AuthoId string) utils.Response
+	Withdraw(value float64,Id string,AuthoId string) utils.Response
 }
