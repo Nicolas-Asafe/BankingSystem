@@ -7,5 +7,5 @@ import (
 
 type MessageRepository interface {
 	Send(message entities.Message) utils.Response
-	ReciveMessage() utils.Response
+	ReciveMessage(message entities.Message) utils.Response
 }
