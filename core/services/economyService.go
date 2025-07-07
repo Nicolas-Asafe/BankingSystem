@@ -24,11 +24,19 @@ func (e EconomyService) FindEconomys(){
 	}
 	utils.Resthis("Economys listed successfully",nil,res.Data)
 }
-func (e EconomyService) CreateEconomy(entities.Economy){
-	res:=e.Repo.newEconomy()
+func (e EconomyService) CreateEconomy(eco entities.Economy){
+	res:=e.Repo.newEconomy(eco)
 	if res.Error != nil{
 		utils.Resthis("Error for create a new economy",res.Error,nil)
 		return
 	}
 	utils.Resthis("Economy created successfully",nil,res.Data)
+}
+func (e EconomyService) DeleteEconomy(Id string){
+	res:=e.Repo.removeEconomy(Id)
+	if res.Error != nil {
+			utils.Resthis("Error for delete this economy",res.Error,nil)
+			return
+	}
+	utils.Resthis("Economy deleted successfully",nil,res.Data)
 }
